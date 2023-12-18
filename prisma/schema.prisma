@@ -40,3 +40,41 @@ model QueueCustomer {
 
   @@map("queuecustomers")
 }
+
+// Exemplos de relacioamento de tabelas 1:1 
+
+// model User {
+//   id      String   @id @default(uuid())
+//   name    String
+//   profile Profile?
+// }
+
+// model Profile {
+//   id     String @id @default(uuid())
+//   type   String
+//   user   User   @relation(fields: [userId], references: [id])
+//   userId String @unique
+// }
+
+// Exemplos de relacioamento de tabelas  Muitos para Muitos (Many to Many)
+
+// model Product {
+//   id              String            @id @default(uuid())
+//   name            String
+//   ProductCategory ProductCategory[]
+// }
+
+// model Category {
+//   id       String            @id @default(uuid())
+//   name     String
+//   products ProductCategory[]
+// }
+
+// model ProductCategory {
+//   product    Product  @relation(fields: [postId], references: [id])
+//   postId     String
+//   Category   Category @relation(fields: [categoryId], references: [id])
+//   categoryId String
+
+//   @@id([postId, categoryId])
+// }
