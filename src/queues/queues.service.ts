@@ -34,4 +34,19 @@ export class QueuesService {
 			}
 		})
 	}
+
+	async getQueuesToday() {
+		const queueToday = await this.prisma.queue.findMany({
+			where: {
+				createdAt: {
+					equals: new Date()
+				}
+			},
+			include: {
+				expert: true,
+                queuecustomer: true
+			}
+		})
+		return queueToday
+	}
 }
